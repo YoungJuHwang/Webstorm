@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weapon title</title>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+</head>
+<body>
+<input type="button" value="홈으로" onclick="goHome()">
+<script>
+    $(function () {
+        battle(new Gun());
+        battle(new Cannon());
+        battle('새총');
+
+    });
+    var goHome = function () {
+        location.href = '/';
+    }
+    var Gun = function () {
+        this.fire = function () {
+            return '총쏘기';
+        }
+    };
+    var Cannon = function () {
+        this.fire = function () {
+            return '대포쏘기';
+        }
+    };
+    function battle(weapon){
+        if (weapon.constructor == Gun) {
+            alert(weapon.fire());
+        } else if (weapon.constructor == Cannon){
+            alert(weapon.fire());
+        } else {
+            alert('무기가 없습니다.');
+        }
+    }
+
+</script>
+</body>
+</html>

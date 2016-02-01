@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var iife = require('./routes/iife');
+var calc = require('./routes/calc');
+var weapon = require('./routes/weapon');
 
 var app = express();
 
@@ -21,11 +24,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/iife', iife);
+app.use('/calc', calc);
+app.use('/weapon', weapon);
 /*app.use('/', routes);*/
+
 app.use('/', function(req, res){
   res.sendfile(__dirname+'/views/index.html');
 });
+
 app.use('/users', users);
 
 // catch 404 and forward to error handler

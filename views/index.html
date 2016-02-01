@@ -10,12 +10,17 @@
     <input type="text" ng-model="yourName" placeholder="Enter a name here">
     <hr>
     <h1>Hello {{yourName}}!</h1>
+    <input type="button" value="버튼클릭" onclick="iife()">
 </div>
 
 <script>
-    $(function() {
-        alert('jquery cdn 정상 작동');
-    });
+    var iife = function(){
+        alert('로케이션');
+        location.href='/iife';
+    };
+
+
+
 </script>
 
 </body>

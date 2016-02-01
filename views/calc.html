@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <title>calc Title</title>
+</head>
+<body>
+<input type="button" value="Weapon" onclick="weapon()">
+<script>
+    function weapon(){
+        location.href = '/weapon';
+    }
+    $(function () {
+        alert('최초값 100에서 ' + Calc.add(100) + ' 50을 빼고 ' + Calc.minus(50) + ' 10을 곱해서 ' + Calc.mul(10) + ' 2로 나누면      ' + Calc.div(2) + ' 이다');
+    });
+
+        var Calc = (function () {
+            var cur = 0;
+            var add = function (val) {
+                cur += val;
+                return cur;
+            };
+            var minus = function (val) {
+                cur -= val;
+                return cur;
+            };
+            var mul = function (val) {
+                cur *= val;
+                return cur;
+            };
+            var div = function (val) {
+                cur /= val;
+                return cur;
+            };
+            // 자바스크립트를 자바처럼 쓰려고 함... 이런 패턴을 통해서만 써야함. 누적이 힘듬.
+            return {  //객체를 리턴함.. => 클로저(울타리)  : 인스턴스 변수 사용한 것처럼.(누적된 계산값) -> JS 언어를 자바VO를 대체.
+                       // 즉시실행함수라 리턴에 이렇게 있는 것.
+                add : add,
+                minus : minus,
+                mul : mul,
+                div : div
+            };
+        })();
+</script>
+</body>
+</html>
