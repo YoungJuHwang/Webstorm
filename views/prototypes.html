@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype Title</title>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+</head>
+<body>
+
+<script>
+$(function () {
+    var hong = new Korean('홍길동');
+    alert(hong.getName());
+
+});
+    var Person = function (name) {
+        this.name = name || '무명';
+    }
+
+    Person.prototype.getName = function () {
+        return this.name;
+    };
+// 이해하고 상속 start
+Person.prototype.getNation = function () {
+    return '한국인';
+}
+// 이해하고 상속 end
+
+
+    var Korean = function (name) {
+        Person.apply(this,arguments);  //apply는 자바의 extends. 차이점은 21~23 번째 줄이 필요함. 최상위 객체(prototype)을 통해 메소드의 기능들을 공유하여 상속처럼 함.
+    }                                   // arguments는 name.   Korean이 Person을 상속받음.
+    // 자바스크립트의 상속 개념은 JS의 객체들은 공통적인 공간인 prototype을 가지는데 이 공간을 이용하여 상속의 개념을 정의할 수 있다.
+    // 자바스크립트는 은닉화, 상속화, 생성자의 자바 개념만 지님. 인터페이스가 없기 때문에 추상화의 개념은 없다.
+    Korean.prototype = new Person();
+
+</script>
+
+</body>
+</html>

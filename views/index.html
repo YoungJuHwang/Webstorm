@@ -10,14 +10,20 @@
     <input type="text" ng-model="yourName" placeholder="Enter a name here">
     <hr>
     <h1>Hello {{yourName}}!</h1>
-    <input type="button" value="버튼클릭" onclick="iife()">
+    <input type="button" value="IIFE 예제 버튼클릭(은닉화 개념)" onclick="iife()">
+    <input type="button" value="프로토(원형)타입 버튼클릭" onclick="prototypes()">
 </div>
 
 <script>
+    $(function () {
+
+    });
     var iife = function(){
-        alert('로케이션');
         location.href='/iife';
     };
+    var prototypes = function () {
+        location.href='/prototypes';
+    }
 
 
 
